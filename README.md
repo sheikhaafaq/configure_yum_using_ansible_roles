@@ -1,1 +1,0 @@
-# configure_yum_using_ansible_roles
