@@ -1,0 +1,29 @@
+---
+# tasks file for config_yum
+- name: "Create a folder anywhere"
+  file:
+          state: directory
+          path: "/yumDvd"
+
+- name: "Mount os dvd on yumDvd folder"
+  mount:
+          src: "/dev/cdrom"
+          path: "/yumDvd"
+          state: mounted 
+          fstype: "iso9660"
+
+- name: "setup Appstream repo"
+  yum_repository:
+          baseurl: "yum_Dvd/Appsteam"
+          name: "Appstream"
+          description: "Appstream dvd"
+          gpgcheck: no
+  
+- name: "setup BaseOS repo"
+  yum_repository:
+          baseurl: "yum_Dvd/BaseOS"
+          name: "BaseOS"
+          description: "BaseOS dvd"
+          gpgcheck: no
+
+
